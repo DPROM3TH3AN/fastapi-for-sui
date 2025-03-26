@@ -1,23 +1,30 @@
-import os
-import uvicorn
 from fastapi import FastAPI
 
+# --------------------------
+# CRITICAL INTEGRATION POINT
+# --------------------------
+# Import the router from api.py module
+from api import router as api_router
 
-app = FastAPI()
+app = FastAPI(
+    title="SuiAutoforge",
+    description="API for AI Smart Contract Generation",
+    version="1.0.0"
+)
+
+# --------------------------
+# ROUTER MOUNTING SECTION
+# --------------------------
+# Attach all endpoints from api.py under "/api" path
+# This connects the main app with the API module
+app.include_router(api_router, prefix="/api")
 
 @app.get("/")
-def read_root():
-    return {"message": "welcome to Autoforge"}
+async def root():
+    return {"message": "API Integration Working"}
 
-
-
-
-from api import router as api_router
-app.include_router(api_router)
-"""
-
-"if __name__ == "__main__":
-   port = int(os.environ.get("PORT", 8000))
-   uvicorn.run("src.main:app", host="0.0.0.0", port=8000, reload=True)
-
-"""
+if __name__ == "__main__":
+    import uvicorn
+    # Explicitly show imported components
+    print("Loaded API Routes:", [route.path for route in app.routes if "api" in route.path])
+    http://uvicorn.run("main:app", host="0.0.0.0", port=8000)
