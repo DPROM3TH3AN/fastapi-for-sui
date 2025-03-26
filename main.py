@@ -11,10 +11,10 @@ def read_root():
 
 
 
-"""
+
 from api import router as api_router
 app.include_router(api_router)
-
+"""
 
 "if __name__ == "__main__":
    port = int(os.environ.get("PORT", 8000))
