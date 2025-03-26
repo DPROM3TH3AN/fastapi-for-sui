@@ -17,7 +17,7 @@ app = FastAPI(
 # --------------------------
 # Attach all endpoints from api.py under "/api" path
 # This connects the main app with the API module
-app.include_router(api_router, prefix="api")
+app.include_router(api_router, prefix="/api")
 
 @app.get("/")
 async def root():
