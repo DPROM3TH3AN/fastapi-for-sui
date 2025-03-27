@@ -4,7 +4,7 @@ from fastapi import FastAPI
 # CRITICAL INTEGRATION POINT
 # --------------------------
 # Import the router from api.py module
-from api import router as api_router
+
 
 app = FastAPI(
     title="SuiAutoforge",
