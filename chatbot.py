@@ -8,13 +8,13 @@ script, and no external dependencies beyond Python's standard library are used.
 Note: Replace "YOUR_API_KEY_HERE" with your actual OpenAI API key.
 """
 
+import os
 import json
 import urllib.request
 import urllib.error
 
-
-
-API_KEY = "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"
+# Retrieve the API key from an environment variable
+API_KEY = os.getenv("OPENAI_API_KEY")
 API_URL = "https://api.openai.com/v1/chat/completions"
 
 def get_sui_contract(prompt):
