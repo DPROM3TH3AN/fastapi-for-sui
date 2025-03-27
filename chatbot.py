@@ -14,7 +14,7 @@ import urllib.error
 
 
 
-API_KEY = "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"
+API_KEY = "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"
 API_URL = "https://api.openai.com/v1/chat/completions"
 
 def get_sui_contract(prompt):
