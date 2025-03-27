@@ -12,7 +12,8 @@ import json
 import urllib.request
 import urllib.error
 
-# Load environment variables f
+
+
 API_KEY = "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"
 API_URL = "https://api.openai.com/v1/chat/completions"
 
@@ -27,6 +28,9 @@ def get_sui_contract(prompt):
     Returns:
         str: The generated Sui Move smart contract code or an error message.
     """
+    if not API_KEY:
+        return "Error: Missing OpenAI API key. Please set the OPENAI_API_KEY environment variable."
+
     # Prepare the payload with context for generating Sui Move contracts.
     payload = {
         "model": "gpt-4",
@@ -40,7 +44,9 @@ def get_sui_contract(prompt):
                 )
             },
             {"role": "user", "content": prompt}
-        ]
+        ],
+        "temperature": 0.7,
+        "max_tokens": 500
     }
 
     # Convert the payload to JSON bytes
@@ -53,7 +59,7 @@ def get_sui_contract(prompt):
     }
 
     # Build and send the HTTP request using urllib
-    request = urllib.request.Request(API_URL, data=data, headers=headers)
+    request = urllib.request.Request(API_URL, data=data, headers=headers, method="POST")
     try:
         with urllib.request.urlopen(request) as response:
             response_data = json.load(response)
