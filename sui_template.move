@@ -13,7 +13,7 @@ module SuiToken {
             name: name,
             total_supply: total_supply,
         };
-        token
+        {contract_logic}
     }
 
     public fun mint_tokens(account: &signer, amount: u64) {
