@@ -33,7 +33,7 @@ def get_sui_contract(prompt):
 
     # Prepare the payload with context for generating Sui Move contracts.
     payload = {
-        "model": "gpt-4",
+        "model": "gpt-3.5-turbo",
         "messages": [
             {
                 "role": "system",
