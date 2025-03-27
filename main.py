@@ -6,7 +6,7 @@ application from API.py and starts the server using uvicorn.
 """
 
 import uvicorn
-from API import app
+from api import app
 
 if __name__ == "__main__":
     # Start the FastAPI server on host 0.0.0.0 and port 8000.
