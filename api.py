@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, FastAPI
 from pydantic import BaseModel
-from chatbot import get_chatbot_response
+from chatbot import get_sui_contract
 from contract_generator import generate_contract
 
 router = APIRouter()
@@ -15,7 +15,7 @@ class GenerationResponse(BaseModel):
 @router.post("/generate_contract", response_model=GenerationResponse)
 async def generate_smart_contract(request: GenerationRequest):
     try:
-        chatbot_response = get_chatbot_response(request.prompt)
+        chatbot_response = get_sui_contract(request.prompt)
         contract_code = generate_contract(chatbot_response)
         return GenerationResponse(contract_code=contract_code, message="Contract generated successfully")
     except Exception as e:

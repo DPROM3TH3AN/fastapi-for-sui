@@ -12,7 +12,7 @@ import json
 import urllib.request
 import urllib.error
 
-# Hardcoded OpenAI API key (insert your actual key here)
+# Load environment variables f
 API_KEY = "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"
 API_URL = "https://api.openai.com/v1/chat/completions"
 
